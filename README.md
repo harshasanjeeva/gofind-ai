@@ -1,19 +1,6 @@
-### plaid-node quickstart
-
-[Quickstart guide](https://plaid.com/docs/quickstart)
-
-``` bash
-git clone https://github.com/plaid/quickstart.git
-cd quickstart/node
-npm install
-
-# The above call defaults to test/tartan credentials.
-# Substitute other values with any of the following:
-APP_PORT=8000 \
-PLAID_CLIENT_ID=[CLIENT_ID] \
-PLAID_SECRET=[SECRET] \
-PLAID_PUBLIC_KEY=[PUBLIC_KEY] \
-PLAID_ENV=sandbox \
-node index.js
-# Go to http://localhost:8000
-```
+This is application deveploped to spot. The application is able to retrieve the travel information for people who are commuting in Ontario. This application gives the station names, location details, Agency to which it belongs and the rating based on the maintainence. The dataset is obtained from "https://myttc.ca/developers". The application is deployed on heroku "https://spot-travel.herokuapp.com/". 
+The backend is written in NodeJs and for the view part I have used ejs as its quick and easy to render the data. 
+In this application,
+> I have used express for routes for navigation from one page to another.
+> Request module in order to obtain the JSON from the api endpoint
+> ejs for view part of the NodeJS code.
