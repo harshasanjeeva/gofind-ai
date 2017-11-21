@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Travel App - Harsha Sanjeeva</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <div class="container">
+    <table>
+
+      <tr>
+        <th>Subway Stops</th>
+        <th>Transport Name</th>
+        <th>Entrance</th>
+        <th>Rating</th>
+      </tr>
+
+      <% for(var i=0; i < tagline.stops.length; i++) { %>
+        <tr>
+          <%if(tagline.stops[i])%>
+            <%{%>
+              <td>
+                <%= tagline.stops[i].name %>
+              </td>
+              <td>
+                <%= tagline.stops[i].agency %>
+              </td>
+              <td>
+                <%= tagline.stops[i].uri %>
+              </td>
+              <%var sub ="Entr"%>
+                <%var sub1 ="Bus"%>
+                  <%var sub2 ="GO"%>
+                    <%var sub3 ="Pas"%>
+                      <%var sub4 ="Wes"%>
+
+                        <%console.log(">>>>>>>>>>>>>>>>")%>
+                          <%console.log(tagline.stops[i].name.includes(sub))%>
+
+                            <% if(tagline.stops[i].name.includes(sub)) {%>
+                              <% var star = "******"%>
+                                <%console.log(star)%>
+                                  <td>
+                                    <%= star%>
+                                  </td>
+                                  <%} else { %>
+                                    <%if(tagline.stops[i].name.includes(sub1)||tagline.stops[i].name.includes(sub2)||tagline.stops[i].name.includes(sub3)||tagline.stops[i].name.includes(sub4)) {%>
+                                      <% var star1 = "****" %>
+                                        <% console.log("????????????")%>
+                                          <td>
+                                            <%= star1%>
+                                          </td>
+                                          <%}%>
+                                            <% } %>
+                                              <%}%>
+        </tr>
+        <% } %>
+
+    </table>
+  </div>
+  <div class="container">
+    <p>These are the details obtained from the travel dataset - Work by Harsha Sanjeeva</p>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+  <script>
+    $('#link-btn').click(function () {
+      console.log("im here before get")
+      $.ajax({
+        type: 'GET',
+        url: '/axe',
+        success: function (result) {
+          var html;
+          console.log("Im here in the link-btn ejs");
+          console.log(result)
+
+          $(this).html(html).slideDown();
+        }
+      });
+    });
+
+    $('#get-accounts-btn').on('click', function (e) {
+      $.get('/axe', function (data) {
+        $('#get-accounts-data').slideUp(function () {
+          var html = '';
+
+          data.result.stops.forEach(function (account, idx) {
+            html += '<div class="inner">';
+            html += '<strong>' + account.name + '</strong><br>';
+            html += '</div>';
+          });
+
+          // $(this).html(html).slideDown();
+        });
+      });
+    })(jQuery);
+  </script>
+</body>
+
+</html>
