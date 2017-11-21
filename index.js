@@ -4,7 +4,7 @@ var envvar = require('envvar');
 var express = require('express');
 var bodyParser = require('body-parser');
 var request = require("request");
-var APP_PORT = envvar.number('APP_PORT', 8000);
+var port = process.env.PORT || 3001;
 
 
 var app = express();
@@ -43,6 +43,7 @@ app.get('/', function(request, response, next) {
 // })
 // });
 
-var server = app.listen(APP_PORT, function () {
-  console.log('plaid-walkthrough server listening on port ' + APP_PORT);
-});
+http.createServer(app).listen(port, function (err) {
+  console.log('listening in http://localhost:' + port);
+  });
+  
